@@ -1,0 +1,82 @@
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <section id="login-box" class="
+      bg-white
+      m-6
+      l-6
+      shadow-md
+      rounded
+      px-8
+      pt-6
+      pb-8
+      mb-4
+      flex flex-col
+      lg:container lg:mx-auto
+    ">
+    <h1 class="text-base text-4xl font-semibold pb-5">Bienvenido</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 pb-5 justify-start">
+      <a ui-sref="register" ui-sref-active="active" class="mt-2 flex items-center text-sm text-gray-500">
+        ¿No tienes cuenta? Regístrate
+      </a>
+    </div>
+    <form method="POST" class="col-6" ng-submit="login(email, password)">
+      <div class="mb-4">
+        <label class="block text-grey-darker text-sm mb-2" for="email">
+          Correo electrónico *
+        </label>
+        <input ng-model="email" class="
+            shadow
+            appearance-none
+            border
+            rounded
+            w-full
+            py-2
+            px-3
+            text-grey-darker
+          " id="email" title="Introduce un mail válido" type="email" placeholder="federico@gmail.com" required,
+          name="username" />
+      </div>
+      <div class="mb-6">
+        <label class="block text-grey-darker text-sm mb-2" for="password">
+          Contraseña *
+        </label>
+        <input class="
+            shadow
+            appearance-none
+            border border-red
+            rounded
+            w-full
+            py-2
+            px-3
+            text-grey-darker
+            mb-3
+          " ng-model="password" id="password" type="password" placeholder="******************"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Debe tener al menos un número, una mayúscula y una minúscula y más de 8 caracteres " required,
+          name="password" />
+      </div>
+      <div class="rounded-md shadow">
+        <button class="
+            shadow
+            appearance-none
+            border
+            w-full
+            flex
+            items-center
+            justify-center
+            px-8
+            py-3
+            border border-transparent
+            text-base
+            font-medium
+            rounded-md
+            text-white
+            bg-indigo-600
+            hover:bg-indigo-700
+            md:py-4 md:text-lg md:px-10
+          " value="Iniciar sesión" type="submit">Iniciar sesión</button>
+      </div>
+
+      <div class="p-5 text-red-darker  flex items-center justify-center">{{errorMessage}}</div>
+    </form>
+  </section>
+</div>

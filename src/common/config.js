@@ -1,14 +1,15 @@
 export default {
-  appName: 'app',
+  appName: "app",
   api: {
-    base: 'https://jsonplaceholder.typicode.com/',
+    base: "http://localhost:9000/api/",
     resources: {
-      users: 'users/'
-    }
+      user: "user/",
+      token: "token/",
+    },
   },
   stateUrls: {
-    // keys should match view component names
-    users: '/users',
-    home: '/'
-  }
+    login: "/login",
+    register: "/register",
+    tableusers: "/",
+  },
 };

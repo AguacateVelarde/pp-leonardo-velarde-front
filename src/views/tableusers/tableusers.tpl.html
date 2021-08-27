@@ -1,0 +1,116 @@
+<div class="flex flex-col text-left p-10">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+
+
+
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+
+            <div class="shadow flex m-5 flex flex-row ">
+                <input class="w-full rounded p-2" type="text" placeholder="Buscar..." ng-keydown="search($event)">
+
+            </div>
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+
+                    <div>
+                        <div>
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" ng-repeat="item in menuItems" class="
+                                  px-6
+                                  py-3
+                                  text-left text-xs
+                                  font-medium
+                                  text-gray-500
+                                  uppercase
+                                  tracking-wider
+                                ">
+                                        {{item}}
+                                    </th>
+                                </tr>
+                            </thead>
+                        </div>
+                    </div>
+
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr ng-repeat="user in users">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">
+                                            {{user.name || 'Sin nombre'}}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 ">
+                                <div class="text-sm text-gray-500">
+                                    {{user.email || 'Sin email'}}
+                                </div>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="
+                                        px-2
+                                        inline-flex
+                                        text-xs
+                                        leading-5
+                                        font-semibold
+                                        rounded-full
+                                       
+                                    "
+                                    ng-class="{'bg-pink-100': user.genre === 'female', 'text-pink-800': user.genre === 'female', 'bg-blue-100': user.genre !== 'female', 'text-blue-800': user.genre !== 'female' }">
+
+                                    {{user.genre === 'female' ? "Femenino" : "Masculino"}}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {{ user.hobby || "Sin hooby"}}
+                            </td>
+                            <td class="
+                                px-6
+                                py-4
+                                whitespace-nowrap
+                                text-right text-sm
+                                font-medium
+                                ">
+                                <a href="#" ng-click="deleteUser(user._id)"
+                                    class="text-red-600 hover:text-red-900">Eliminar</a>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <button ng-click="loadVIPUsers()"
+                class="m-10 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                {{ !isOpenVIPUsers ? "Ver Usuarios VIP" : "Cerrar Usuarios VIP"}}
+            </button>
+
+            <button ng-click="createNewUser()"
+                class="m-10 bg-transparent hover:bg-yellow-500 text-yellow-500 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">
+                Crear un usuario nuevo
+            </button>
+
+            <div ng-if="isLoadingVIPUsers"> Cargando... </div>
+            <div ng-if="isOpenVIPUsers" class="text-center">
+                <hr />
+                <div class="antialiased" ng-repeat="hobby in vipUsers">
+
+                    <span class="text-purple-600 font-semibold text-xl">{{hobby._id}}</span>
+                    <div class="list-none md:list-none antialiased" ng-repeat="user in hobby.users">
+                        <span class="font-extralight">{{user.name}} </span>
+                    </div>
+                    <hr />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
